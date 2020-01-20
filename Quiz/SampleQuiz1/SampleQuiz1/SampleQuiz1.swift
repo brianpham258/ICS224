@@ -73,12 +73,20 @@ class SampleQuiz1 {
     ///
     
     func remove(s: String, u: UInt) -> String {
-        var str: String = s
-        var strArr = str.map {String($0)}
-        strArr.remove(at: Int(u))
-        str = strArr.joined(separator: "")
+        var counter: Int = 1
+        var arrS = Array(s)
+        var newString = ""
+        for i in 0..<s.count {
+            if(counter != u) {
+                newString.append(arrS[i])
+                counter += 1
+            }
+            else {
+                counter = 1
+            }
+        }
         
-        return str
+        return newString
     }
  
     // MARK: Question 4
@@ -99,7 +107,17 @@ class SampleQuiz1 {
     ///
     
     func deriveMultiples(i: Int, u: UInt) -> String {
-        return "-224"
+        let endPoint: Int = i * Int(u);
+        var str = ""
+        
+        for j in stride(from: i, through: endPoint, by: i) {
+            str.append(String(j))
+            if (j != endPoint) {
+                str.append(" ")
+            }
+        }
+        
+        return str
     }
 
 }
