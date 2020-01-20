@@ -24,79 +24,79 @@ class Lab1UITests: XCTestCase {
     }
 
     
-    func test10() {
+    func test10() { // Test input 10
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
         
         let num = "10"
         
-        app.textFields["initialValueTextField"].tap()
+        app.textFields["initialValueTextField"].tap() // Enable the NumPad
         
         for i in num {
-            app.keys[String(i)].tap()
+            app.keys[String(i)].tap() // Loop through the string and tap the number
         }
         
-        app.buttons["countButton"].tap()
+        app.buttons["countButton"].tap() // Press the Push button
         
-        XCTAssertEqual(app.staticTexts["countLabel"].label, "11")
+        XCTAssertEqual(app.staticTexts["countLabel"].label, "11") // Check if the result is equal to 11 or not
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testSwitch() {
+    func testSwitch() { // Test Switch button and its capability
         let app = XCUIApplication()
         app.launch()
         
-        app.switches["countSwitch"].tap()
-        app.switches["countSwitch"].tap()
+        app.switches["countSwitch"].tap() // Tap the Switch to disable the Push button
+        app.buttons["countButton"].tap() // Press the Push button
+        app.switches["countSwitch"].tap() // Tap the Switch to enable the Push button
+        app.buttons["countButton"].tap() // Press the Push button
         
-        app.buttons["countButton"].tap()
-        
-        XCTAssertEqual(app.staticTexts["countLabel"].label, "1")
+        XCTAssertEqual(app.staticTexts["countLabel"].label, "1") // Check if the result is equal to 1 or not
     }
     
-    func testPush() {
+    func testPush() { // Test pressing Push button
         let app = XCUIApplication()
         app.launch()
         
-        for i in 0..<5 {
+        for i in 0..<5 { // Press the Push button 5 times
             app.buttons["countButton"].tap()
         }
         
-        XCTAssertEqual(app.staticTexts["countLabel"].label, "5")
+        XCTAssertEqual(app.staticTexts["countLabel"].label, "5") // Check if the result is equal to 5 or not
     }
     
-    func testOverflow() {
+    func testOverflow() { // Test overflow
         let app = XCUIApplication()
         app.launch()
         
-        app.textFields["initialValueTextField"].tap()
+        app.textFields["initialValueTextField"].tap() // Enable the NumPad
         
         let num = "9223372036854775807"
-        for i in num {
+        for i in num { // Loop through the string and tap each number that is in the string
             app.keys[String(i)].tap()
         }
         
-        app.buttons["countButton"].tap()
+        app.buttons["countButton"].tap() // Press the Push button
         
-        XCTAssertEqual(app.staticTexts["countLabel"].label, "1")
+        XCTAssertEqual(app.staticTexts["countLabel"].label, "1") // Check if the result is equal to 1 or not
     }
     
-    func test007() {
+    func test007() { // Test first input is 0
         let app = XCUIApplication()
         app.launch()
         
         let num = "007"
         
-        app.textFields["initialValueTextField"].tap()
+        app.textFields["initialValueTextField"].tap() // Enable the NumPad
         
-        for i in num {
+        for i in num { // Loop through the string and tap each number that is in the string
             app.keys[String(i)].tap()
         }
         
-        app.buttons["countButton"].tap()
+        app.buttons["countButton"].tap() // Press the Push button
         
-        XCTAssertEqual(app.staticTexts["countLabel"].label, "8")
+        XCTAssertEqual(app.staticTexts["countLabel"].label, "8") // Check if the result is equal to 8 or not
     }
 }
