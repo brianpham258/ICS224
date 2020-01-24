@@ -60,7 +60,7 @@ class Lab1UITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        for i in 0..<5 { // Press the Push button 5 times
+        for _ in 0..<5 { // Press the Push button 5 times
             app.buttons["countButton"].tap()
         }
         

@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="or7-8p-VnH">
-                                <rect key="frame" x="132" y="327.33333333333331" width="150" height="241.33333333333331"/>
+                                <rect key="frame" x="136" y="327.33333333333331" width="142" height="241.33333333333331"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72Z-TV-LjE">
-                                        <rect key="frame" x="50.666666666666657" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="46.666666666666657" y="0.0" width="51" height="31"/>
                                         <accessibility key="accessibilityConfiguration" identifier="countSwitch"/>
                                         <connections>
                                             <action selector="toggleSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="Jn3-dA-5ok"/>
                                         </connections>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-Kw-15q">
-                                        <rect key="frame" x="57.666666666666657" y="73" width="35" height="30"/>
+                                        <rect key="frame" x="53.666666666666657" y="73" width="35" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="countButton"/>
                                         <state key="normal" title="Push"/>
                                         <connections>
@@ -34,21 +34,15 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Pushes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIO-sL-l6i">
-                                        <rect key="frame" x="0.0" y="145" width="150" height="20.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="145" width="142" height="20.333333333333343"/>
                                         <accessibility key="accessibilityConfiguration" identifier="countLabel"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="EpF-L6-sMW"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QZb-fj-plg">
-                                        <rect key="frame" x="0.0" y="207.33333333333331" width="150" height="34"/>
+                                        <rect key="frame" x="0.0" y="207.33333333333331" width="142" height="34"/>
                                         <accessibility key="accessibilityConfiguration" identifier="initialValueTextField"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="VRn-aD-hTp"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
@@ -56,6 +50,10 @@
                                         </connections>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="PIO-sL-l6i" firstAttribute="leading" secondItem="or7-8p-VnH" secondAttribute="leading" id="56h-kZ-f3J"/>
+                                    <constraint firstItem="QZb-fj-plg" firstAttribute="leading" secondItem="or7-8p-VnH" secondAttribute="leading" id="ljb-T9-omR"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -66,7 +64,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="countButton" destination="FZZ-Kw-15q" id="6xj-Bj-DGI"/>
+                        <outlet property="countButton" destination="FZZ-Kw-15q" id="lUX-4U-Btt"/>
                         <outlet property="countLabel" destination="PIO-sL-l6i" id="nNe-57-LLU"/>
                         <outlet property="countSwitch" destination="72Z-TV-LjE" id="f1E-A9-DSF"/>
                         <outlet property="initialValueTextField" destination="QZb-fj-plg" id="afC-mE-4V8"/>
