@@ -117,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" fixedFrame="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="WCw-Qf-5nD" customClass="PhotoEntryTableViewCell" customModule="Lab4" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="WCw-Qf-5nD" customClass="PhotoEntryTableViewCell" customModule="Lab4" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" translatesAutoresizingMaskIntoConstraints="NO" id="37f-cq-3Eg">

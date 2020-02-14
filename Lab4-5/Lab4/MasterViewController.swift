@@ -10,7 +10,7 @@ import UIKit
 import os
 
 class MasterViewController: UITableViewController {
-
+    
     var detailViewController: DetailViewController? = nil
     var objects = [PhotoEntry]()
     var detailView = DetailViewController()
@@ -19,8 +19,9 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = editButtonItem
+        // load data at startup
         if let savedNotes = loadObjects() {
-            objects += savedNotes
+            objects += savedNotes // append saved data to objects array
         }
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -36,11 +37,11 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
 
-    @objc
-    func insertNewObject(_ sender: Any) {
+    @objc func insertNewObject(_ sender: Any) {
         objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes"), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        // save data after adding a new note
         saveObjects()
     }
 
@@ -48,6 +49,7 @@ class MasterViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(detailViewController?.isChanged == true) {
+            // save data after editing note
             saveObjects()
         }
         if segue.identifier == "showDetail" {
@@ -90,6 +92,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: indexPath.row)
+            // save data after delete a note
             saveObjects()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -100,10 +103,13 @@ class MasterViewController: UITableViewController {
     // MARK: - Load/Save
     func loadObjects() -> [PhotoEntry]? {
         do {
+            // Try to load data from memory
             let data = try Data(contentsOf: PhotoEntry.archiveURL)
             
+            // return photo as PhotoEntry array
             return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [PhotoEntry]
         } catch {
+            // Catch any error then print to console
             os_log("Cannot load due to %@", log: OSLog.default, type: .debug, error.localizedDescription)
             return nil
         }
@@ -111,9 +117,12 @@ class MasterViewController: UITableViewController {
     
     func saveObjects() {
         do {
+            // store data to variable data
             let data = try NSKeyedArchiver.archivedData(withRootObject: objects, requiringSecureCoding: false)
+            // try to write data to a file
             try data.write(to: PhotoEntry.archiveURL)
         } catch {
+            // catch any erro then print to console
             os_log("Cannot save due to %@", log: OSLog.default, type: .debug, error.localizedDescription)
         }
     }

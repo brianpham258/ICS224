@@ -20,10 +20,10 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     // MARK: - Delegate Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoView.image = entry?.photo
-        notesView.text = entry?.notes
+        photoView.image = entry?.photo // load the photo
+        notesView.text = entry?.notes // load the text
         notesView.delegate = self
-        isChanged = false
+        isChanged = false // check if note is changed or not
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppeared), name:
             UIWindow.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappeared), name:
@@ -31,10 +31,11 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView){
-        entry?.notes = textView.text
-        isChanged = true
+        entry?.notes = textView.text // load the text from textView
+        isChanged = true // check if note is changed or not
     }
     
+    // Enable keyboard
     @objc func keyboardAppeared(_ notification: NSNotification) {
         guard let frameValue = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as?
             NSValue else {
@@ -45,6 +46,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         scrollVIew.verticalScrollIndicatorInsets.bottom = frame.size.height + OFFSET
     }
     
+    // Disable keyboard
     @objc func keyboardDisappeared(_ notification: NSNotification) {
         scrollVIew.contentInset.bottom = 0
         scrollVIew.verticalScrollIndicatorInsets.bottom = 0
