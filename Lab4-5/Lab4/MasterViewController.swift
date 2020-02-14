@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import os
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [PhotoEntry]()
-
+    var detailView = DetailViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = editButtonItem
-
+        if let savedNotes = loadObjects() {
+            objects += savedNotes
+        }
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
@@ -37,11 +41,15 @@ class MasterViewController: UITableViewController {
         objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes"), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        saveObjects()
     }
 
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(detailViewController?.isChanged == true) {
+            saveObjects()
+        }
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
@@ -51,6 +59,7 @@ class MasterViewController: UITableViewController {
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 detailViewController = controller
             }
+            tableView.reloadData()
         }
     }
 
@@ -67,6 +76,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoEntryTableViewCell
         let object = objects[indexPath.row]
+        
         cell.photoView.image = object.photo
         cell.notesView.text = object.notes
         return cell
@@ -80,12 +90,32 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: indexPath.row)
+            saveObjects()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
-
+    // MARK: - Load/Save
+    func loadObjects() -> [PhotoEntry]? {
+        do {
+            let data = try Data(contentsOf: PhotoEntry.archiveURL)
+            
+            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [PhotoEntry]
+        } catch {
+            os_log("Cannot load due to %@", log: OSLog.default, type: .debug, error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func saveObjects() {
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: objects, requiringSecureCoding: false)
+            try data.write(to: PhotoEntry.archiveURL)
+        } catch {
+            os_log("Cannot save due to %@", log: OSLog.default, type: .debug, error.localizedDescription)
+        }
+    }
 }
 
