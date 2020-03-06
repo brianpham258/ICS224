@@ -25,6 +25,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     var dateChanged: Bool = false
     var isEntryEmpty: Bool = false
     static var isFirstLoad: Bool = true // Check if the app is opened the first time
+    static var isEntryDeleted: Bool = false
 
     let OFFSET: CGFloat = 10
     
@@ -36,9 +37,6 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         datePicker.isHidden = true      // DIsable UIDatePicker if no entry is selected
         
         if(DetailViewController.isFirstLoad) {  // Disable camera, dateView, UIDatePicker at first load
-            enableCamera.isEnabled = false
-            dateView.isHidden = true
-            datePicker.isHidden = true
             DetailViewController.isFirstLoad = false
         }
         else {
@@ -47,12 +45,8 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
             datePicker.isHidden = false
         }
         
-        if(isEntryEmpty) {  // If the master view is empty delete photo and note, and disable camera, dateView, and UIDatePicker
-            enableCamera.isEnabled = false
-            dateView.isHidden = true
-            datePicker.isHidden = true
-            photoView.image = nil
-            notesView.text = nil
+        if(DetailViewController.isEntryDeleted) {  // Check if an entry is deleted
+            DetailViewController.isEntryDeleted = false
         }
         else {
             photoView.image = entry?.photo // Load the photo from PhotoEntry

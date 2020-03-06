@@ -103,11 +103,12 @@ class MasterViewController: UITableViewController {
             // save data after delete an entry
             saveObjects()
             
-            if(objects.count == 0) {
-                detailViewController?.isEntryEmpty = true   // Disable camera after deleting all entries
-                detailViewController?.viewDidLoad()     // Call viewDidLoad() function in DetailViewController.swift
-                                                        // file to continue handling logic
-            }
+            detailViewController?.photoView.image = nil
+            detailViewController?.notesView.text = nil
+            DetailViewController.isFirstLoad = true
+            DetailViewController.isEntryDeleted = true
+            detailViewController?.viewDidLoad()     // Call viewDidLoad() function in DetailViewController.swift
+                                                    // file to continue handling logic
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
