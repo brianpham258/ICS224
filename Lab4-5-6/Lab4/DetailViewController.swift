@@ -32,10 +32,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         enableCamera.isEnabled = false  // Disable camera if no entry is selected
-        dateView.isHidden = true
-        datePicker.isHidden = true
+        dateView.isHidden = true        // Disable dateView if no entry is selected
+        datePicker.isHidden = true      // DIsable UIDatePicker if no entry is selected
         
-        if(DetailViewController.isFirstLoad) {  // Disable camera at first load
+        if(DetailViewController.isFirstLoad) {  // Disable camera, dateView, UIDatePicker at first load
             enableCamera.isEnabled = false
             dateView.isHidden = true
             datePicker.isHidden = true
@@ -47,7 +47,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
             datePicker.isHidden = false
         }
         
-        if(isEntryEmpty) {  // If the master view is empty delete the photo and note, and disable camera
+        if(isEntryEmpty) {  // If the master view is empty delete photo and note, and disable camera, dateView, and UIDatePicker
             enableCamera.isEnabled = false
             dateView.isHidden = true
             datePicker.isHidden = true
@@ -55,9 +55,9 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
             notesView.text = nil
         }
         else {
-            photoView.image = entry?.photo // load the photo
-            notesView.text = entry?.notes // load the note
-            dateView.text = entry?.date // load the date
+            photoView.image = entry?.photo // Load the photo from PhotoEntry
+            notesView.text = entry?.notes // Load the note from PhotoEntry
+            dateView.text = entry?.date // Load the date from PhotoEntry
             notesView.delegate = self
             
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppeared), name:
@@ -69,8 +69,8 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     
     // Check if the note area is changed or not
     func textViewDidChange(_ textView: UITextView){
-        entry?.notes = textView.text // load the text from textView
-        textChanged = true // check if note is changed or not
+        entry?.notes = textView.text     // Replace the old note in PhotoEntry with the new note
+        textChanged = true      // Check if note is changed or not
     }
     
     // Enable keyboard
@@ -116,10 +116,11 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     
     // Finish image capture
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        photoView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        picker.dismiss(animated: true, completion: nil)
+        photoView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage   // Save the new photo to
+                                                                                            // photoView variable
+        picker.dismiss(animated: true, completion: nil)     // Dismiss the camera
         photoChanged = true
-        entry?.photo = photoView.image!
+        entry?.photo = photoView.image!     // Replace the old photo in PhotoEntry with the new photo
     }
     
     // Cancel the camera
@@ -141,12 +142,12 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         })
     }
     
-    //Date change
+    // Detect any change of the UIDatePicker
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd hh:mm a"
-        dateView.text = df.string(from: datePicker.date)
-        entry?.date = dateView.text ?? ""
+        df.dateFormat = "yyyy-MM-dd hh:mm a"    // Set a format for date
+        dateView.text = df.string(from: datePicker.date)    // Convert from Date type to String type
+        entry?.date = dateView.text ?? ""   // Replace the old date in PhotoEntry with the new date
         dateChanged = true
     }
 }

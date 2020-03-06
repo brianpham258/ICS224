@@ -33,7 +33,7 @@ class PhotoEntry: NSObject, NSCoding {
     }
     
     // MARK: - Load/Save
-    // Decode image and text to UIImage and String
+    // Decode image, text, date to UIImage and String
     required convenience init?(coder aDecoder: NSCoder) {
         guard let newPhoto = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage else {
             os_log("Missing image", log: OSLog.default, type: .debug)
@@ -53,7 +53,7 @@ class PhotoEntry: NSObject, NSCoding {
         self.init(photo: newPhoto, notes: newNotes, date: newDate)
     }
     
-    // Encode image and text
+    // Encode image, note, and date
     func encode(with aCoder: NSCoder) {
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(notes, forKey: PropertyKey.notes)
