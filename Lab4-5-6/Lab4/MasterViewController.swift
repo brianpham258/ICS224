@@ -38,7 +38,9 @@ class MasterViewController: UITableViewController {
     }
 
     @objc func insertNewObject(_ sender: Any) {
-        objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes"), at: 0)
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm a"
+        objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes", date: df.string(from: Date())), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
         // save data after adding a new note
@@ -46,12 +48,12 @@ class MasterViewController: UITableViewController {
     }
 
     // MARK: - Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(detailViewController?.isChanged == true) {
-            // save data after editing note
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
+        // save data after editing note or photo
+        if(detailViewController?.textChanged == true || detailViewController?.photoChanged == true || detailViewController?.dateChanged == true) {
             saveObjects()
         }
+        
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
@@ -78,9 +80,10 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PhotoEntryTableViewCell
         let object = objects[indexPath.row]
-        
+
         cell.photoView.image = object.photo
         cell.notesView.text = object.notes
+
         return cell
     }
 
@@ -92,9 +95,16 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
             // save data after delete a note
             saveObjects()
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // disable camera after deleting all tries
+            if(objects.count == 0) {
+                detailViewController?.isEntryEmpty = true
+                detailViewController?.viewDidLoad()
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
@@ -105,7 +115,6 @@ class MasterViewController: UITableViewController {
         do {
             // Try to load data from memory
             let data = try Data(contentsOf: PhotoEntry.archiveURL)
-            
             // return photo as PhotoEntry array
             return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [PhotoEntry]
         } catch {

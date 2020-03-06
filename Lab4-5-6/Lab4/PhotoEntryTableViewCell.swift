@@ -12,5 +12,4 @@ class PhotoEntryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var notesView: UILabel!
-
 }
