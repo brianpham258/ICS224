@@ -60,7 +60,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LNg-tX-NEa">
-                                                <rect key="frame" x="0.0" y="784" width="703" height="216"/>
+                                                <rect key="frame" x="0.0" y="784" width="703.5" height="216"/>
                                                 <connections>
                                                     <action selector="dateChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="y8Y-T5-gQX"/>
                                                 </connections>
@@ -212,6 +212,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
