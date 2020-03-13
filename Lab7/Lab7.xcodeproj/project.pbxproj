@@ -16,6 +16,8 @@
 		84AC35CA2412BE9900D760FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AC35C82412BE9900D760FE /* LaunchScreen.storyboard */; };
 		84AC35D52412BE9A00D760FE /* Lab7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC35D42412BE9A00D760FE /* Lab7Tests.swift */; };
 		84AC35E02412BE9A00D760FE /* Lab7UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC35DF2412BE9A00D760FE /* Lab7UITests.swift */; };
+		84AC35EE2412CA3200D760FE /* New Document.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 84AC35ED2412CA3200D760FE /* New Document.rtf */; };
+		84AC35F02412D6E200D760FE /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC35EF2412D6E200D760FE /* CustomizeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		84AC35DB2412BE9A00D760FE /* Lab7UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab7UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AC35DF2412BE9A00D760FE /* Lab7UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab7UITests.swift; sourceTree = "<group>"; };
 		84AC35E12412BE9A00D760FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AC35ED2412CA3200D760FE /* New Document.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "New Document.rtf"; sourceTree = "<group>"; };
+		84AC35EF2412D6E200D760FE /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				84AC35BF2412BE9300D760FE /* DocumentViewController.swift */,
 				84AC35C12412BE9300D760FE /* Document.swift */,
 				84AC35C32412BE9300D760FE /* Main.storyboard */,
+				84AC35EF2412D6E200D760FE /* CustomizeViewController.swift */,
+				84AC35ED2412CA3200D760FE /* New Document.rtf */,
 				84AC35C62412BE9900D760FE /* Assets.xcassets */,
 				84AC35C82412BE9900D760FE /* LaunchScreen.storyboard */,
 				84AC35CB2412BE9900D760FE /* Info.plist */,
@@ -238,6 +244,7 @@
 				84AC35CA2412BE9900D760FE /* LaunchScreen.storyboard in Resources */,
 				84AC35C72412BE9900D760FE /* Assets.xcassets in Resources */,
 				84AC35C52412BE9300D760FE /* Main.storyboard in Resources */,
+				84AC35EE2412CA3200D760FE /* New Document.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +272,7 @@
 				84AC35C22412BE9300D760FE /* Document.swift in Sources */,
 				84AC35C02412BE9300D760FE /* DocumentViewController.swift in Sources */,
 				84AC35BE2412BE9300D760FE /* DocumentBrowserViewController.swift in Sources */,
+				84AC35F02412D6E200D760FE /* CustomizeViewController.swift in Sources */,
 				84AC35BC2412BE9300D760FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

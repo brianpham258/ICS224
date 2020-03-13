@@ -41,7 +41,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func load(_ sender: UIButton) {
-        loadObject() == nil ? images.insert(UIImage(named:"defaultImage")!, at: 0) : (images = loadObject()!)
+        if (loadObject() == nil) {
+            images.insert(UIImage(named:"defaultImage")!, at: 0)
+        }
+        else {
+            images = loadObject()!
+        }
+        viewDidLoad()
+//        loadObject() == nil ? images.insert(UIImage(named:"defaultImage")!, at: 0) : (images = loadObject()!)
     }
     
     func loadObject() -> [UIImage]? {
