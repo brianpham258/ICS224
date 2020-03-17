@@ -23,13 +23,11 @@ class CustomizeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var delegate: CustomizeDelegate!
     var pickerData = [String]()
     var currentRow: Int = 0
-    var style1 = [false, false, false]
-    var style2 = [false, false, false]
-    var style3 = [false, false, false]
-    var style4 = [false, false, false]
-    var isBoldRed = false
-    var isItalicsRed = false
-    var isUnderlineRed = false
+    
+    static var style1 = [false, false, false]           // Created 4 arrays to store the style of buttons in 4 pickers
+    static var style2 = [false, false, false]           // The position of the flags are Bold, Italics, Underline respectively
+    static var style3 = [false, false, false]           // If a Bold or Italics or Underline button is pressed, set true
+    static var style4 = [false, false, false]           // If a Bold or Italics or Underline button is pressed again, set false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +53,27 @@ class CustomizeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     // The data to return
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         currentRow = row
-        // Set all button back to blue when changing the picker
-        isBoldRed = false
-        isItalicsRed = false
-        isUnderlineRed = false
-        boldButton.setTitleColor(UIColor.blue, for: .normal)
-        italicsButton.setTitleColor(UIColor.blue, for: .normal)
-        underlineButton.setTitleColor(UIColor.blue, for: .normal)
+        
+        if(currentRow == 0) {           // Check for previous style settings of picker 1
+            CustomizeViewController.style1[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style1[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style1[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
+        }
+        else if (currentRow == 1) {     // Check for previous style settings of picker 2
+            CustomizeViewController.style2[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style2[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style2[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
+        }
+        else if (currentRow == 2) {     // Check for previous style settings of picker 3
+            CustomizeViewController.style3[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style3[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style3[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
+        }
+        else {                          // Check for previous style settings of picker 4
+            CustomizeViewController.style4[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style4[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
+            CustomizeViewController.style4[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
+        }
         
         return pickerData[row]
     }
@@ -74,94 +86,175 @@ class CustomizeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     // Bold button
     @IBAction func boldButton(_ sender: UIButton) {
-        // Change button color to red
-        if !isBoldRed {
-            boldButton.setTitleColor(UIColor.red, for: .normal)
-            isBoldRed = true
-        }
-        else {
-            boldButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        
         // Check which picker is currently picked and set the Bold flag
         switch currentRow {
         case 0:
-            style1[0] = true
+            // Change button color to red or blue for picker 1
+            if !CustomizeViewController.style1[0] {
+                boldButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style1[0] = true
+            }
+            else {
+                boldButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style1[0] = false
+            }
+            
             break
         case 1:
-            style2[0] = true
+            // Change button color to red or blue for picker 2
+            if !CustomizeViewController.style2[0] {
+                boldButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style2[0] = true
+            }
+            else {
+                boldButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style2[0] = false
+            }
+            
             break
         case 2:
-            style3[0] = true
+            // Change button color to red or blue for picker 3
+            if !CustomizeViewController.style3[0] {
+                boldButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style3[0] = true
+            }
+            else {
+                boldButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style3[0] = false
+            }
+            
             break
         case 3:
-            style4[0] = true
+            // Change button color to red or blue for picker 4
+            if !CustomizeViewController.style4[0] {
+                boldButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style4[0] = true
+            }
+            else {
+                boldButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style4[0] = false
+            }
+            
             break
         default:
             break
         }
-        delegate.didStyleChange(style1: style1, style2: style2, style3: style3, style4: style4)
+        delegate.didStyleChange(style1: CustomizeViewController.style1, style2: CustomizeViewController.style2, style3: CustomizeViewController.style3, style4: CustomizeViewController.style4)
     }
     
     // Italics Button
     @IBAction func italicsButton(_ sender: UIButton) {
-        // Change button color to red
-        if !isItalicsRed {
-            italicsButton.setTitleColor(UIColor.red, for: .normal)
-            isItalicsRed = true
-        }
-        else {
-            italicsButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        
         // Check which picker is currently picked and set the Italics flag
         switch currentRow {
         case 0:
-            style1[1] = true
+            // Change button color to red or blue for picker 1
+            if !CustomizeViewController.style1[1] {
+                italicsButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style1[1] = true
+            }
+            else {
+                italicsButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style1[1] = false
+            }
+            
             break
         case 1:
-            style2[1] = true
+            // Change button color to red or blue for picker 2
+            if !CustomizeViewController.style2[1] {
+                italicsButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style2[1] = true
+            }
+            else {
+                italicsButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style2[1] = false
+            }
+            
             break
         case 2:
-            style3[1] = true
+            // Change button color to red or blue for picker 3
+            if !CustomizeViewController.style3[1] {
+                italicsButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style3[1] = true
+            }
+            else {
+                italicsButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style3[1] = false
+            }
+            
             break
         case 3:
-            style4[1] = true
+            // Change button color to red or blue for picker 4
+            if !CustomizeViewController.style4[1] {
+                italicsButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style4[1] = true
+            }
+            else {
+                italicsButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style4[1] = false
+            }
+            
             break
         default:
             break
         }
-        delegate.didStyleChange(style1: style1, style2: style2, style3: style3, style4: style4)
+        delegate.didStyleChange(style1: CustomizeViewController.style1, style2: CustomizeViewController.style2, style3: CustomizeViewController.style3, style4: CustomizeViewController.style4)
     }
     
     // Underline button
     @IBAction func underlineButton(_ sender: UIButton) {
-        // Change button color to red
-        if !isUnderlineRed {
-            underlineButton.setTitleColor(UIColor.red, for: .normal)
-            isUnderlineRed = true
-        }
-        else {
-            underlineButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        
         // Check which picker is currently picked and set the Underline flag
         switch currentRow {
         case 0:
-            style1[2] = true
+            // Change button color to red or blue for picker 1
+            if !CustomizeViewController.style1[2] {
+                underlineButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style1[2] = true
+            }
+            else {
+                underlineButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style1[2] = false
+            }
+            
             break
         case 1:
-            style2[2] = true
+            // Change button color to red or blue for picker 2
+            if !CustomizeViewController.style2[2] {
+                underlineButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style2[2] = true
+            }
+            else {
+                underlineButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style2[2] = false
+            }
+            
             break
         case 2:
-            style3[2] = true
+            // Change button color to red or blue for picker 3
+            if !CustomizeViewController.style3[2] {
+                underlineButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style3[2] = true
+            }
+            else {
+                underlineButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style3[2] = false
+            }
+            
             break
         case 3:
-            style4[2] = true
+            // Change button color to red or blue for picker 4
+            if !CustomizeViewController.style4[2] {
+                underlineButton.setTitleColor(UIColor.red, for: .normal)
+                CustomizeViewController.style4[2] = true
+            }
+            else {
+                underlineButton.setTitleColor(UIColor.blue, for: .normal)
+                CustomizeViewController.style4[2] = false
+            }
+            
             break
         default:
             break
         }
-        delegate.didStyleChange(style1: style1, style2: style2, style3: style3, style4: style4)
+        delegate.didStyleChange(style1: CustomizeViewController.style1, style2: CustomizeViewController.style2, style3: CustomizeViewController.style3, style4: CustomizeViewController.style4)
     }
 }

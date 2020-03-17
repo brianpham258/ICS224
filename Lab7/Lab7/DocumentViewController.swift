@@ -99,6 +99,8 @@ class DocumentViewController: UIViewController {
         }
         // Set bold and italics
         else if (style1[0] && style1[1]) {
+            let newFont = UIFont(name: "Arial-BoldItalicMT", size: 15.0)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: newFont as Any, range: textView.selectedRange)
             boldItalicFont(attributedString: attributedString)
         }
         else {
@@ -133,6 +135,8 @@ class DocumentViewController: UIViewController {
         }
         // Set bold and italics
         else if (style2[0] && style2[1]) {
+            let newFont = UIFont(name: "Arial-BoldItalicMT", size: 15.0)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: newFont as Any, range: textView.selectedRange)
             boldItalicFont(attributedString: attributedString)
         }
         else {
@@ -167,6 +171,8 @@ class DocumentViewController: UIViewController {
         }
         // Set bold and italics
         else if (style3[0] && style3[1]) {
+            let newFont = UIFont(name: "Arial-BoldItalicMT", size: 15.0)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: newFont as Any, range: textView.selectedRange)
             boldItalicFont(attributedString: attributedString)
         }
         else {
@@ -199,10 +205,12 @@ class DocumentViewController: UIViewController {
             underlineText(attributedString: attributedString)
             boldItalicFont(attributedString: attributedString)
         }
+        // Set bold and italics
         else if (style4[0] && style4[1]) {
+            let newFont = UIFont(name: "Arial-BoldItalicMT", size: 15.0)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: newFont as Any, range: textView.selectedRange)
             boldItalicFont(attributedString: attributedString)
         }
-        // Set bold and italics
         else {
             if style4[0] {
                 // set bold
