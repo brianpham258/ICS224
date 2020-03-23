@@ -40,12 +40,12 @@ class CustomizeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.didReceiveMemoryWarning()
     }
     
-    // Number of column of data
+    // Number component of the picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    // Number of row of data
+    // Number element of the picker
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
@@ -54,25 +54,33 @@ class CustomizeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         currentRow = row
         
-        if(currentRow == 0) {           // Check for previous style settings of picker 1
+        // Check for previous style
+        switch currentRow {
+        case 0:     // Check for previous style settings of picker 1
             CustomizeViewController.style1[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style1[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style1[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        else if (currentRow == 1) {     // Check for previous style settings of picker 2
+            break
+        
+        case 1:     // Check for previous style settings of picker 2
             CustomizeViewController.style2[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style2[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style2[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        else if (currentRow == 2) {     // Check for previous style settings of picker 3
+            break
+        
+        case 2:     // Check for previous style settings of picker 3
             CustomizeViewController.style3[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style3[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style3[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
-        }
-        else {                          // Check for previous style settings of picker 4
+            break
+        
+        case 3:     // Check for previous style settings of picker 4
             CustomizeViewController.style4[0] ? boldButton.setTitleColor(UIColor.red, for: .normal) : boldButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style4[1] ? italicsButton.setTitleColor(UIColor.red, for: .normal) : italicsButton.setTitleColor(UIColor.blue, for: .normal)
             CustomizeViewController.style4[2] ? underlineButton.setTitleColor(UIColor.red, for: .normal) : underlineButton.setTitleColor(UIColor.blue, for: .normal)
+            break
+        default:
+            break
         }
         
         return pickerData[row]
