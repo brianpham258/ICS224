@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Lab9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jqn-jo-WXQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAh-jn-Ur4" userLabel="Current Location">
+                                <rect key="frame" x="279" y="721" width="115" height="30"/>
+                                <state key="normal" title="Current Location"/>
+                                <connections>
+                                    <action selector="focusOnCurrentLocation:" destination="9pv-A4-QxB" eventType="touchUpInside" id="y3p-30-mKr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jqn-jo-WXQ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="Am2-iZ-zWe"/>
+                            <constraint firstItem="jqn-jo-WXQ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="Jpl-ZS-6eX"/>
+                            <constraint firstItem="jqn-jo-WXQ" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="fyv-cp-TnY"/>
+                            <constraint firstItem="jqn-jo-WXQ" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="gT8-kG-2E0"/>
+                            <constraint firstItem="TAh-jn-Ur4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PQr-Ze-W5v" secondAttribute="leading" symbolic="YES" id="kNY-YC-gl8"/>
+                            <constraint firstItem="TAh-jn-Ur4" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="677" id="waf-hV-rGq"/>
+                            <constraint firstItem="TAh-jn-Ur4" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="zZR-rO-TYs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="mapView" destination="jqn-jo-WXQ" id="aFm-7m-JKN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
+        <!--Second-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Lab9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdZ-y8-m9u">
+                                <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                            </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rE8-E6-X4g">
+                                <rect key="frame" x="0.0" y="268" width="414" height="545"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GdZ-y8-m9u" firstAttribute="leading" secondItem="rE8-E6-X4g" secondAttribute="leading" id="4az-wT-1JE"/>
+                            <constraint firstItem="GdZ-y8-m9u" firstAttribute="trailing" secondItem="rE8-E6-X4g" secondAttribute="trailing" id="4eZ-aM-ne9"/>
+                            <constraint firstItem="rE8-E6-X4g" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="J1k-qO-PVH"/>
+                            <constraint firstItem="GdZ-y8-m9u" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="YRk-4E-I3t"/>
+                            <constraint firstItem="GdZ-y8-m9u" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="iYS-NE-AsZ"/>
+                            <constraint firstAttribute="trailing" secondItem="GdZ-y8-m9u" secondAttribute="trailing" id="vIS-CA-g4w"/>
+                            <constraint firstItem="rE8-E6-X4g" firstAttribute="top" secondItem="GdZ-y8-m9u" secondAttribute="bottom" constant="8" symbolic="YES" id="wlc-JQ-47K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="sensorPickerView" destination="GdZ-y8-m9u" id="gqw-0E-vLt"/>
+                        <outlet property="statusTextView" destination="rE8-E6-X4g" id="2x2-vi-Jc7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
