@@ -1,0 +1,69 @@
+//
+//  Quiz.swift
+//  Quiz
+//
+//  Created by Test Account on 2020-01-14.
+//  Copyright © 2020 Test Account. All rights reserved.
+//
+
+import UIKit
+
+class Quiz {
+    
+    // MARK: Question 1
+    
+    ///
+    /// PURPOSE:
+    /// Determines whether the supplied String represents an even number or not
+    ///
+    /// PARAMETERS:
+    /// A String to be analyzed
+    ///
+    /// RETURN/SIDE EFFECTS:
+    /// True if the supplied String represents an even number, false otherwise
+    ///
+    /// NOTES:
+    /// N/A
+    ///
+    
+    func evenNumber(s: String?) -> Bool {
+        return (Int(s ?? "") ?? 1) % 2 == 0
+    }
+    
+    // MARK: Question 2
+
+    ///
+    /// PURPOSE:
+    /// Combines every Character of the left String with every Character of the right String.
+    /// For example, if left = "ABC" and right = "+-", returns the String "A+A-B+B-C+C-"
+    ///
+    /// PARAMETERS:
+    /// Two Strings to be combined
+    ///
+    /// RETURN/SIDE EFFECTS:
+    /// A String containing all combinations resulting from combining all Characters from the left String with all Characters from the right String.
+    /// Characters are combined going from left to right
+    ///
+    /// NOTES:
+    /// N/A
+    ///
+    
+    func combine(left: String, right: String) -> String {
+        var result = ""
+        
+        if (left == "") {
+            return right
+        }
+        else if (right == "") {
+            return left
+        }
+        
+        for l in left {
+            for r in right {
+                result += String(l) + String(r)
+            }
+        }
+        
+        return result
+    }
+}

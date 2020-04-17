@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ihm-L4-zsJ">
+                                <rect key="frame" x="8" y="401" width="398" height="94"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipL-Cx-YCF">
+                                        <rect key="frame" x="8" y="0.0" width="382" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="userText"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textEnter:" destination="BYZ-38-t0r" eventType="editingChanged" id="mSF-B5-bjz"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tb7-gB-8AD">
+                                        <rect key="frame" x="8" y="74" width="382" height="20"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="digitLabel"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ipL-Cx-YCF" secondAttribute="trailing" constant="8" id="4IE-JG-h4A"/>
+                                    <constraint firstItem="tb7-gB-8AD" firstAttribute="leading" secondItem="ihm-L4-zsJ" secondAttribute="leading" constant="8" id="LmG-ya-BEb"/>
+                                    <constraint firstAttribute="trailing" secondItem="tb7-gB-8AD" secondAttribute="trailing" constant="8" id="WNG-Mo-g0c"/>
+                                    <constraint firstItem="ipL-Cx-YCF" firstAttribute="leading" secondItem="ihm-L4-zsJ" secondAttribute="leading" constant="8" id="rAU-ek-njH"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ihm-L4-zsJ" secondAttribute="trailing" constant="8" id="2RT-ye-NWD"/>
+                            <constraint firstItem="ihm-L4-zsJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ByL-OD-rJT"/>
+                            <constraint firstItem="ihm-L4-zsJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="JdR-4u-TaX"/>
+                            <constraint firstItem="ihm-L4-zsJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="357" id="LdN-tE-UtR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="digitLabel" destination="tb7-gB-8AD" id="4o9-vw-G6I"/>
+                        <outlet property="userText" destination="ipL-Cx-YCF" id="HXt-HD-9Ov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="133.92857142857142"/>
+        </scene>
+    </scenes>
+</document>
