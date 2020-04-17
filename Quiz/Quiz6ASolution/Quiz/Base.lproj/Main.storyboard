@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="qz9-jm-5Su">
+                                <rect key="frame" x="107" y="44" width="200" height="243"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n0k-Il-aDy">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="inputField"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="processChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="xir-ag-Ver"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k4y-vs-uqc">
+                                        <rect key="frame" x="0.0" y="71" width="200" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="filterField"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="processChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="mVy-av-Z8G"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Output Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZUu-vO-xDf">
+                                        <rect key="frame" x="0.0" y="142" width="200" height="34"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="outputField"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NMM-o5-PPg">
+                                        <rect key="frame" x="51" y="213" width="98" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRp-Yr-B1F">
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="saveButton"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOc-Zu-mWk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oab-Xb-7bv">
+                                                <rect key="frame" x="64" y="0.0" width="34" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="loadButton"/>
+                                                <state key="normal" title="Load"/>
+                                                <connections>
+                                                    <action selector="load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SZw-rC-COZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FIx-p9-y7A"/>
+                                    <constraint firstItem="n0k-Il-aDy" firstAttribute="leading" secondItem="qz9-jm-5Su" secondAttribute="leading" id="FNM-5c-WvM"/>
+                                    <constraint firstItem="ZUu-vO-xDf" firstAttribute="leading" secondItem="qz9-jm-5Su" secondAttribute="leading" id="eeq-8U-n9N"/>
+                                    <constraint firstItem="k4y-vs-uqc" firstAttribute="leading" secondItem="qz9-jm-5Su" secondAttribute="leading" id="jQc-X5-WkM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qz9-jm-5Su" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="62z-MB-Axa"/>
+                            <constraint firstItem="qz9-jm-5Su" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c49-BC-9AU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterField" destination="k4y-vs-uqc" id="Z8W-wV-mcn"/>
+                        <outlet property="inputField" destination="n0k-Il-aDy" id="XUT-vF-diu"/>
+                        <outlet property="outputField" destination="ZUu-vO-xDf" id="2d9-nk-Mwy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="133.92857142857142"/>
+        </scene>
+    </scenes>
+</document>
